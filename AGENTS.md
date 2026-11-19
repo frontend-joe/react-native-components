@@ -39,3 +39,14 @@ Docs: https://docs.expo.dev/eas/index.md
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+
+## This project
+
+Uses yarn (yarn.lock): run `yarn`, never npm. `npx expo install` detects yarn automatically.
+
+A catalogue of component examples (the React Native counterpart of `~/source/react-components`).
+Plain JS/JSX, no TypeScript. Follow the conventions in README.md: each component lives in
+`src/components/<category>/<Name>/`, is exported through the category and root `index.js` barrels,
+and is registered in `src/routes.js` with a `/<category>/<name>` path. Never add per-component
+route files under `src/app/`; `src/app/[category]/[name].jsx` renders everything from the registry.
+Note: `StyleSheet.absoluteFill`/`absoluteFillObject` do not exist in RN 0.88; use `{ position: "absolute", inset: 0 }`.
